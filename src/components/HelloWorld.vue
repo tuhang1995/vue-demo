@@ -1,32 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+    <h4>该项目是前端开发模板。文件可根据项目的要求或个人习惯进行增加</h4>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa" target="_blank" rel="noopener">pwa</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li>1. common文件夹下封装了axios方法， 如果你有更好的封装方法，可用自己的</li>
+      <li>2. api文件是接口文件，统一管理</li>
+      <li>3. asstes 静态资源</li>
+      <li>4. components 全局公用组件</li>
+      <li>5. filters 过滤器</li>
+      <li>6. lib 外部饮用的插件存放及修改文件</li>
+      <li>7. common 通用的一些文件 包括 css、js</li>
+      <li>8. views 视图目录</li>
+
     </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+
   </div>
 </template>
 
@@ -43,15 +30,19 @@ export default {
 <style scoped lang="stylus">
 h3
   margin 40px 0 0
-
 ul
   list-style-type none
   padding 0
-
+  display flex
+  flex-direction column
+  align-items center
+  width 32vw
+  margin 0 auto
 li
-  display inline-block
-  margin 0 10px
-
+  display flex
+  align-items left
+  width 100%
+  margin 10px
 a
   color #42b983
 </style>
