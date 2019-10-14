@@ -41,6 +41,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 3. asstes 静态资源
 4. components 全局公用组件
 5. filters 过滤器
-6. lib 外部饮用的插件存放及修改文件
+6. lib 外部引用的插件存放及修改文件
 7. common 通用的一些文件 包括 css、js
 8. views 视图目录
