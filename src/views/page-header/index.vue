@@ -13,7 +13,7 @@
 </template>
  
 <script>
-import TreeSelect from '@/components/treeSelect.vue';
+import TreeSelect from '@/components/tree-select.vue';
 var menus = [
   {
     'menuId': 1,

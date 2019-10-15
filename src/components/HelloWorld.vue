@@ -8,7 +8,7 @@
       <li>3. asstes 静态资源</li>
       <li>4. components 全局公用组件</li>
       <li>5. filters 过滤器</li>
-      <li>6. lib 外部饮用的插件存放及修改文件</li>
+      <li>6. lib 外部引用的插件存放及修改文件</li>
       <li>7. common 通用的一些文件 包括 css、js</li>
       <li>8. views 视图目录</li>
 
