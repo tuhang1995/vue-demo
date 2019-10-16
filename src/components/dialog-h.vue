@@ -26,20 +26,22 @@ footer	Dialog 按钮操作区的内容
 open	Dialog 打开的回调	—
 close	Dialog 关闭的回调	—
 closed	Dialog 关闭动画结束时的回调	—
+:height="height"
   -->
   <el-dialog :modal="true"
              :modal-append-to-body="true"
              :title="tittle"
              :visible.sync="isShow"
              :width="width"
-             :height="height"
              :close-on-click-modal="false"
              :show-close="true"
              :before-close='beforeClose'
              :close-on-press-escape="true"
-             :custom-class='dialogClass'
+             :custom-class='dialog'
              center>
     <slot></slot>
+
+    <!-- <slot name="footer"></slot> -->
     <!--<div class="divauto">
   <el-button type="success" size="mini" @click="showDio" round>Table</el-button>
   <el-button type="success" size="mini" @click="showDio" round>Table</el-button>
@@ -55,10 +57,6 @@ export default {
       type: Boolean,
       default: true
     },
-    switchStyle: {
-      type: Boolean,
-      default: true
-    },
     tittle: {
       type: String,
       default: '标题'
@@ -71,7 +69,7 @@ export default {
       type: String,
       default: "1000px"
     },
-    dialogClass: {
+    dialog: {
       type: String,
       default: 'dClass'
     }

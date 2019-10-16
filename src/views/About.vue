@@ -4,7 +4,8 @@
     <el-button @click="isShow=true">点击打开弹窗</el-button>
     <dia :title="title"
          :isShow="isShow"
-         @closeDialog='closeDialog'>
+         @closeDialog='closeDialog'
+         :dialog='aboutClass'>
       <el-form ref="form"
                :model="form"
                label-width="80px">
@@ -62,11 +63,14 @@
                     v-model="form.desc"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary"
-                     @click="onSubmit">立即创建</el-button>
-          <el-button @click="isShow=false">取消</el-button>
+
         </el-form-item>
       </el-form>
+      <div class="btn-c">
+        <el-button type="primary"
+                   @click="onSubmit">立即创建</el-button>
+        <el-button @click="isShow=false">取消</el-button>
+      </div>
     </dia>
   </div>
 </template>
@@ -78,6 +82,7 @@ export default {
     return {
       title: '我是标题',
       isShow: false,
+      aboutClass: 'aboutClass',
       form: {
         name: '',
         region: '',
@@ -119,4 +124,7 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.btn-c
+  text-align right
+</style>
