@@ -28,6 +28,13 @@ export default new Router({
             component: function() {
                 return import ( /* webpackChunkName: "about" */ './views/page-header/index.vue')
             }
+        },
+        {
+            path: '/dialog',
+            name: 'dialog',
+            component: function() {
+                return import ( /* webpackChunkName: "about" */ './views/page-home/index.vue')
+            }
         }
     ]
 })

@@ -1,14 +1,16 @@
 <template>
   <div>
+    <h3>这是一个下拉树的组件使用</h3>
     <el-button size="small"
                @click="initChecked"
-               style="margin: 10px;">这是一个下拉树的组件使用</el-button>
+               style="margin: 10px;">点击初始化</el-button>
     <tree-select :data="data"
                  :defaultProps="defaultProps"
                  multiple
                  :nodeKey="nodeKey"
                  :checkedKeys="defaultCheckedKeys"
                  @popoverHide="popoverHide"></tree-select>
+
   </div>
 </template>
  
