@@ -8,8 +8,19 @@
 
 import api from '@/common/js/serve'
 let commnoApi = {
-    getInit(data) {
-        return api('/接口地址', data, 'get')
+    getTable(data) {
+        return api('/comments', data, 'get')
+    },
+    postTable(data) {
+        return api('/testTable', data, 'get')
+    },
+    addTable(data) {
+        return api('/testTable', data, 'post')
+    },
+    //修改
+    editTable(data) {
+        console.log(data)
+        return api(`/testTable/${data.id}`, data, 'put')
     }
 }
 export default commnoApi

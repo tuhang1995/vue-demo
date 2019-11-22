@@ -24,23 +24,12 @@ npm run build
 npm run test
 ```
 
-### Lints and fixes files
+### 文件目录
 
 ```
-npm run lint
+  page-base   //组件目录
+    animationDamo.vue   //模态框动画效果
+    index.vue           //主入口
+    merge-table.vue     //合并表格 element
+    nowVideo.vue        //在线视频播放
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### 模板介绍
-
-1. common 文件夹下封装了 axios 方法， 如果你有更好的封装方法，可用自己的
-2. api 文件是接口文件，统一管理
-3. asstes 静态资源
-4. components 全局公用组件
-5. filters 过滤器
-6. lib 外部引用的插件存放及修改文件
-7. common 通用的一些文件 包括 css、js
-8. views 视图目录

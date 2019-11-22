@@ -15,12 +15,21 @@ module.exports = {
     productionSourceMap: true,
     devServer: {
         port: 3000,
-        open: true,
-        https: false,
-        overlay: {
-            warnings: true,
-            errors: true
+        host: "0.0.0.0",
+        proxy: {
+            "/api": {
+                target: "http://localhost:3000",
+                changeOrigin: true,
+                pathRewrite: {
+                    "^/api": ""
+                }
+            }
         },
+        // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
+        overlay: {
+            warnings: false,
+            errors: true
+        }
     },
     configureWebpack: { // 覆盖webpack默认配置的都在这里
         resolve: { // 配置解析别名

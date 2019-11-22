@@ -4,7 +4,7 @@
  */
 //配置api接口
 import axios from 'axios'
-var rootApi = "http://15.60.16.86:18080/ksb";
+var rootApi = "http://localhost:3000/";
 //var rootApi = "http://15.60.16.86:8080/pcs"
 //设置请求头 
 const http = axios.create({

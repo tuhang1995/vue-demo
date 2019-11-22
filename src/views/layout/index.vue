@@ -1,13 +1,18 @@
 <template>
   <div class="wrap">
-    <sliderBar></sliderBar>
-    <main-con></main-con>
+    <page-head></page-head>
+    <section class="wrap-con">
+      <sliderBar></sliderBar>
+      <main-con></main-con>
+    </section>
+
   </div>
 </template>
 
 <script>
 import sliderBar from './sliderBar'
 import mainCon from './main'
+import pageHead from '@/views/layout/page-head'
 export default {
   name: '',
   props: [''],
@@ -19,7 +24,8 @@ export default {
 
   components: {
     sliderBar,
-    mainCon
+    mainCon,
+    pageHead
   },
 
   computed: {},
@@ -41,5 +47,10 @@ export default {
 .wrap
   display flex
   height 100%
+  width 100%
+  flex-direction column
+.wrap-con
+  display flex
+  width 100%
   height 100%
 </style>

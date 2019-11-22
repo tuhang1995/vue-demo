@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/page">page</router-link> |
-      <router-link to="/dialog">dialog</router-link> |
-      <router-link to="/jinshan">实时视频</router-link> |
-      <router-link to="/jinshanMap">金山地图2</router-link>
-
-    </div> -->
     <router-view />
   </div>
 </template>
+<script>
+import homeCon from '@/views/layout/index'
+export default {
+  name: 'home',
+  components: {
+    homeCon
+  }
+}
+</script>
 <style lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
