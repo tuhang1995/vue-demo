@@ -1,20 +1,15 @@
 <template>
-  <div class="wrap">
-    <div class="sliderBar">
-      <el-menu class="el-menu-vertical-demo"
-               :default-active="$route.path">
-        <el-menu-item v-for="(item, index) in menuItem"
-                      :key="index"
-                      :index="item.pageUrl"
-                      @click="handle_menuItem(item)">
-          <i :class="item.icon"></i>
-          <span>{{ item.name }}</span>
-        </el-menu-item>
-      </el-menu>
-    </div>
-    <div class="main">
-      <router-view />
-    </div>
+  <div class="sliderBar">
+    <el-menu class="el-menu-vertical-demo"
+             :default-active="$route.path">
+      <el-menu-item v-for="(item, index) in menuItem"
+                    :key="index"
+                    :index="item.pageUrl"
+                    @click="handle_menuItem(item)">
+        <i :class="item.icon"></i>
+        <span>{{ item.name }}</span>
+      </el-menu-item>
+    </el-menu>
   </div>
 
 </template>
@@ -62,9 +57,6 @@ export default {
 
 </script>
 <style lang='stylus' scoped>
-.wrap
-  width 100%
-  display flex
 .sliderBar
   width 200px
 /deep/.el-menu-vertical-demo

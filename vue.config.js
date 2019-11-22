@@ -7,7 +7,7 @@ module.exports = {
         loaderOptions: {
             stylus: {
                 //全局引入的css  一些通用变量
-                // import: '~@/common/css/minxis.styl'
+                import: '~@/common/css/minxis.styl'
             }
         }
     },
@@ -31,5 +31,16 @@ module.exports = {
                 '@i': path.resolve(__dirname, './src/assets/images'),
             }
         }
+
+    },
+    chainWebpack: config => {
+        config.module
+            .rule('swf')
+            .test(/\.swf$/)
+            .use('url-loader')
+            .loader('url-loader')
+            .options({
+                limit: 10000
+            })
     }
 }

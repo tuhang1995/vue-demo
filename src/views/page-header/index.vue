@@ -10,7 +10,33 @@
                  :nodeKey="nodeKey"
                  :checkedKeys="defaultCheckedKeys"
                  @popoverHide="popoverHide"></tree-select>
+    <div class="search-web">
+      <el-input @keyup.enter.native='search'
+                v-model='searchText'
+                clearable
+                size="mini"
+                @clear='clearWord'
+                placeholder="请输入搜索的名称">
 
+      </el-input>
+      <div class="c-table">
+        <el-table :data="tableData"
+                  stripe
+                  style="width: 100%">
+          <el-table-column prop="age"
+                           label="年龄"
+                           width="180">
+          </el-table-column>
+          <el-table-column prop="name"
+                           label="姓名"
+                           width="180">
+          </el-table-column>
+          <el-table-column prop="food"
+                           label="食物">
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
   </div>
 </template>
  
@@ -79,16 +105,42 @@ export default {
         label: 'menuName'
       },
       nodeKey: 'menuId',
-      defaultCheckedKeys: []
+      defaultCheckedKeys: [],
+      searchText: '',
+      ulListData: [
+        { name: '张三', age: 10, food: '苹果' },
+        { name: '张三丰', age: 30, food: '苹果,桃子' },
+        { name: '李四', age: 20, food: '香蕉' },
+        { name: '王五', age: 30, food: '葡萄' },
+      ],
+      tableData: []
     };
   },
-  created () { },
+  created () {
+    this.tableData = this.ulListData
+  },
   mounted () {
     // 组建中增加了监听数据变化的，
     // 此处初始化defaultCheckedKeys的值，有效果
     this.defaultCheckedKeys = [1001];
   },
   methods: {
+    clearWord () {
+      this.tableData = this.ulListData
+    },
+    search () {
+      let searchArr = this.ulListData.filter(element => {
+        if (element.name.search(this.searchText) != -1) {
+          return element
+        }
+        if (element.food.search(this.searchText) != -1) {
+          return element
+        }
+      })
+      console.log(searchArr)
+      this.tableData = []
+      this.tableData = searchArr
+    },
     // 改变默认选中的节点数据
     initChecked () {
       this.defaultCheckedKeys = [1006, 1007];
@@ -101,5 +153,17 @@ export default {
 };
 </script>
  
-<style scoped>
+ <style lang="stylus" scoped>
+ .search-web
+   width 80vw
+   display flex
+   align-items center
+   justify-content center
+   margin 0 auto
+   margin-top 20px
+   flex-direction column
+   .el-input
+     width 20vw
+   .c-table
+     width 80vw
 </style>

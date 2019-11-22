@@ -1,40 +1,55 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "@/views/Home.vue";
 
-Vue.use(Router)
+Vue.use(VueRouter);
 
-export default new Router({
-    mode: 'history',
+const routes = [{
+        path: "/",
+        name: "home",
+        component: Home
+    },
+    {
+        path: "/page",
+        name: "page",
+        component: () =>
+            import ("@/views/layout/index"),
+        children: [{
+                path: "/page/header",
+                name: "header",
+                component: () =>
+                    import ("@/views/page-header/index")
+            },
+            {
+                path: "/page/base",
+                name: "base",
+                component: () =>
+                    import ("@/views/page-base/index"),
+                children: [{
+                    path: '/page/base/jinshan',
+                    name: 'jinshan',
+                    component: () =>
+                        import ("@/views/page-base/jinshan"),
+                }, {
+                    path: '/page/base/nowVideo',
+                    name: 'nowVideo',
+                    component: () =>
+                        import ("@/views/page-base/nowVideo"),
+                }, {
+                    path: '/page/base/test3',
+                    name: 'test3',
+                    component: () =>
+                        import ("@/views/page-base/test3"),
+                }]
+            }
+        ]
+    }
+];
+
+const router = new VueRouter({
+    mode: "hash",
     base: process.env.BASE_URL,
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/about',
-            name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: function() {
-                return import ( /* webpackChunkName: "about" */ './views/About.vue')
-            }
-        },
-        {
-            path: '/page',
-            name: 'page',
-            component: function() {
-                return import ( /* webpackChunkName: "about" */ './views/page-header/index.vue')
-            }
-        },
-        {
-            path: '/dialog',
-            name: 'dialog',
-            component: function() {
-                return import ( /* webpackChunkName: "about" */ './views/page-home/index.vue')
-            }
-        }
-    ]
-})
+    routes
+});
+
+export default router;
