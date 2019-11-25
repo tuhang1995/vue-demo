@@ -4,32 +4,37 @@
  */
 //配置api接口
 import axios from 'axios'
-var rootApi = "http://localhost:3000/";
-//var rootApi = "http://15.60.16.86:8080/pcs"
-//设置请求头 
+var rootApi = 'http://192.168.0.54:3000/'
+    //var rootApi = "http://15.60.16.86:8080/pcs"
+    //设置请求头
 const http = axios.create({
-    baseURL: rootApi,
-    // withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
-    responseType: 'json'
-
-});
-//自定义判断元素类型js
+        baseURL: rootApi,
+        // withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        responseType: 'json'
+    })
+    //自定义判断元素类型js
 function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    return {}.toString
+        .call(obj)
+        .match(/\s([a-zA-Z]+)/)[1]
+        .toLowerCase()
 }
-http.interceptors.request.use((config) => {
-    return config
-});
-//响应拦截
-http.interceptors.response.use((res) => {
-    return res
-}, (error) => {
-    return Promise.reject(error)
-});
-//对参数进行处理
+http.interceptors.request.use(config => {
+        return config
+    })
+    //响应拦截
+http.interceptors.response.use(
+        res => {
+            return res
+        },
+        error => {
+            return Promise.reject(error)
+        }
+    )
+    //对参数进行处理
 function filterNull(o) {
     for (var key in o) {
         if (o[key] === null) {
@@ -54,20 +59,21 @@ export default function commonapi(url, data, method = 'post') {
         const options = {
             url,
             method
-        };
+        }
         if (method.toLowerCase() === 'get') {
             options.params = data
         } else {
             options.data = data
         }
-        http(options).then(res => {
+        http(options)
+            .then(res => {
+                // console.log('成功返回数据');
 
-            // console.log('成功返回数据');
-
-            resolve(res.data)
-        }).catch(err => {
-            reject();
-            console.log("接口请求失败", err)
-        })
+                resolve(res.data)
+            })
+            .catch(err => {
+                reject()
+                console.log('接口请求失败', err)
+            })
     })
 }

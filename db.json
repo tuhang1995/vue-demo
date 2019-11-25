@@ -1,169 +1,156 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": {
-    "code": "200",
-    "message": "请求成功",
-    "data": [
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "辅助决策能力",
-        "patch": "2级",
-        "sorce": 10,
-        "check": false
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "辅助决策能力",
-        "patch": "3级",
-        "sorce": 14,
-        "check": false
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "沟通表达能力",
-        "patch": "1级",
-        "sorce": 20,
-        "check": false
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "沟通表达能力",
-        "patch": "2级",
-        "sorce": 5,
-        "check": true
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "统筹协助能力",
-        "patch": "1级",
-        "sorce": 5,
-        "check": true
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "统筹协助能力",
-        "patch": "2级",
-        "sorce": 5,
-        "check": true
-      },
-      {
-        "type": "guanli",
-        "indeName": "管理类能力",
-        "sonIndex": "统筹协助能力",
-        "patch": "3级",
-        "sorce": 5,
-        "check": true
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "沟通表达能力",
-        "patch": "1级",
-        "sorce": 10,
-        "check": false
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "沟通表达能力",
-        "patch": "2级",
-        "sorce": 8,
-        "check": false
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "沟通表达能力",
-        "patch": "3级",
-        "sorce": 4,
-        "check": false
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "团队合作能力",
-        "patch": "1级",
-        "sorce": 10,
-        "check": false
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "团队合作能力",
-        "patch": "2级",
-        "sorce": 8,
-        "check": false
-      },
-      {
-        "type": "renji",
-        "indeName": "人际关系能力",
-        "sonIndex": "团队合作能力",
-        "patch": "3级",
-        "sorce": 4,
-        "check": false
-      }
+    "posts": [{
+        "id": 1,
+        "title": "json-server",
+        "author": "typicode"
+    }],
+    "comments": {
+        "code": "200",
+        "message": "请求成功",
+        "data": [{
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "辅助决策能力",
+                "patch": "2级",
+                "sorce": 10,
+                "check": false
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "辅助决策能力",
+                "patch": "3级",
+                "sorce": 14,
+                "check": false
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "沟通表达能力",
+                "patch": "1级",
+                "sorce": 20,
+                "check": false
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "沟通表达能力",
+                "patch": "2级",
+                "sorce": 5,
+                "check": true
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "统筹协助能力",
+                "patch": "1级",
+                "sorce": 5,
+                "check": true
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "统筹协助能力",
+                "patch": "2级",
+                "sorce": 5,
+                "check": true
+            },
+            {
+                "type": "guanli",
+                "indeName": "管理类能力",
+                "sonIndex": "统筹协助能力",
+                "patch": "3级",
+                "sorce": 5,
+                "check": true
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "沟通表达能力",
+                "patch": "1级",
+                "sorce": 10,
+                "check": false
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "沟通表达能力",
+                "patch": "2级",
+                "sorce": 8,
+                "check": false
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "沟通表达能力",
+                "patch": "3级",
+                "sorce": 4,
+                "check": false
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "团队合作能力",
+                "patch": "1级",
+                "sorce": 10,
+                "check": false
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "团队合作能力",
+                "patch": "2级",
+                "sorce": 8,
+                "check": false
+            },
+            {
+                "type": "renji",
+                "indeName": "人际关系能力",
+                "sonIndex": "团队合作能力",
+                "patch": "3级",
+                "sorce": 4,
+                "check": false
+            }
+        ]
+    },
+    "profile": {
+        "name": "typicode"
+    },
+    "testTable": [{
+            "activityName": "活动4",
+            "activityArea": "武汉",
+            "time": "2019-11-18 17:54:39",
+            "activityPurpose": "单纯品牌曝光",
+            "resources": "线上品牌商赞助",
+            "content": "系统管理页面测试",
+            "id": 4
+        },
+        {
+            "activityName": "下班啦",
+            "activityArea": "成都",
+            "time": "2019-11-22 17:57:21",
+            "activityPurpose": "线下主题活动",
+            "resources": "线上品牌商赞助",
+            "content": "明天周末了",
+            "id": 5
+        },
+        {
+            "activityName": "活动1",
+            "activityArea": "北京",
+            "time": "2019-11-18 09:58:33",
+            "activityPurpose": "美食/餐厅线上活动",
+            "resources": "线上品牌商赞助",
+            "content": "活动形式2",
+            "id": 3
+        },
+        {
+            "activityName": "活动43",
+            "activityArea": "成都",
+            "time": "2019-11-18 10:00:35",
+            "activityPurpose": "美食/餐厅线上活动",
+            "resources": "线上品牌商赞助",
+            "content": "测试活动12",
+            "id": 72
+        }
     ]
-  },
-  "profile": {
-    "name": "typicode"
-  },
-  "testTable": [
-    {
-      "activityName": "活动4",
-      "activityArea": "成都",
-      "time": "2019-11-05 16:51:25",
-      "activityPurpose": "单纯品牌曝光",
-      "resource": "线下场地免费",
-      "content": "系统管理页面测试",
-      "id": 1
-    },
-    {
-      "activityName": "看电影",
-      "activityArea": "上海",
-      "time": "2019-11-13 17:53:34",
-      "activityPurpose": "单纯品牌曝光",
-      "resources": "线下场地免费",
-      "content": "广中西路555号看电影2",
-      "id": 2
-    },
-    {
-      "activityName": "吃饭",
-      "activityArea": "成都",
-      "time": "2018-11-05 17:20:45",
-      "activityPurpose": "线下主题活动",
-      "resources": "线上品牌商赞助",
-      "content": "去宽窄巷子吃饭",
-      "id": 3
-    },
-    {
-      "activityName": "活动4",
-      "activityArea": "武汉",
-      "time": "2019-11-18 17:54:39",
-      "activityPurpose": "单纯品牌曝光",
-      "resources": "线上品牌商赞助",
-      "content": "系统管理页面测试",
-      "id": 4
-    },
-    {
-      "activityName": "下班啦",
-      "activityArea": "成都",
-      "time": "2019-11-22 17:57:21",
-      "activityPurpose": "线下主题活动",
-      "resources": "线上品牌商赞助",
-      "content": "明天周末了",
-      "id": 5
-    }
-  ]
 }

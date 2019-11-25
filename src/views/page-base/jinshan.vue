@@ -22,7 +22,7 @@
                        @click.native='editTable'>修改</el-button>
             <el-button type="danger"
                        icon="el-icon-delete"
-                       @click.native='showModel'>删除</el-button>
+                       @click.native='deleteTable'>删除</el-button>
 
           </el-col>
         </el-row>
@@ -67,6 +67,7 @@
     <transition name="slide">
       <animation-demo @close='close'
                       @addTable='addTable'
+                      :title="title"
                       :selectionTable='selectionTable'
                       v-if="modelVis"></animation-demo>
     </transition>
@@ -85,7 +86,8 @@ export default {
       tableData: [],
       searchText: "",
       loading: false,
-      selectionTable: []
+      selectionTable: [],
+      title: "添加"
     };
   },
 
@@ -102,8 +104,37 @@ export default {
   },
 
   methods: {
+    deleteTable () {
+      if (this.selectionTable.length == 0) {
+        this.$message({
+          type: "warning",
+          message: "选中表格后在进行操作"
+        })
+        return
+      }
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        api.deletTable(this.selectionTable[0]).then((res) => {
+          this.loading = true
+          this.getTestData()
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        })
+
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
+
+    },
     handleSelectionChange (selection) {
-      console.log(selection)
       this.selectionTable = selection
 
     },
@@ -139,7 +170,7 @@ export default {
       } else {
 
 
-        obj.param.id = this.tableData.length + 1
+        obj.param.id = Math.floor(Math.random() * (100 - 1 + 1)) + 1
         api.addTable(obj.param).then((res) => {
           this.getTestData()
         })
@@ -160,12 +191,13 @@ export default {
         })
         return
       }
+      this.title = '编辑'
       this.modelVis = true
     },
+    //添加
     showModel () {
-
-
       this.modelVis = true
+      this.title = '添加'
     },
     close () {
       this.modelVis = false

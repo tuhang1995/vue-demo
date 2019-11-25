@@ -1,5 +1,9 @@
 <template>
   <div class="animationModel">
+    <div class="form-head">
+      <h3>{{title}}</h3>
+    </div>
+    <el-divider></el-divider>
     <div class="form-con">
       <el-form ref="form"
                :model="form"
@@ -19,21 +23,22 @@
           </el-select>
         </el-form-item>
         <el-form-item label="活动时间">
-          <el-col :span="11">
-            <el-date-picker type="date"
-                            value-format="yyyy-MM-dd"
+          <el-col :span="24">
+            <el-date-picker type="datetime"
+                            :picker-options="pickerOptions"
+                            value-format="yyyy-MM-dd HH:mm:ss"
                             placeholder="选择日期"
-                            v-model="form.date1"
+                            v-model="form.time"
                             style="width: 100%;"></el-date-picker>
           </el-col>
-          <el-col class="line"
+          <!-- <el-col class="line"
                   :span="2">-</el-col>
           <el-col :span="11">
             <el-time-picker placeholder="选择时间"
                             value-format="HH:mm:ss"
                             v-model="form.date2"
                             style="width: 100%;"></el-time-picker>
-          </el-col>
+          </el-col> -->
         </el-form-item>
         <!-- <el-form-item label="即时配送">
           <el-switch v-model="form.delivery"></el-switch>
@@ -78,10 +83,36 @@ export default {
     selectionTable: {
       default: [],
       type: Array
+    },
+    title: {
+      default: '',
+      type: String
     }
   },
   data () {
     return {
+      pickerOptions: {
+        shortcuts: [{
+          text: '今天',
+          onClick (picker) {
+            picker.$emit('pick', new Date());
+          }
+        }, {
+          text: '昨天',
+          onClick (picker) {
+            const date = new Date();
+            date.setTime(date.getTime() - 3600 * 1000 * 24);
+            picker.$emit('pick', date);
+          }
+        }, {
+          text: '一周前',
+          onClick (picker) {
+            const date = new Date();
+            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+            picker.$emit('pick', date);
+          }
+        }]
+      },
       form: {
         activityName: '',
         activityArea: '',
@@ -102,6 +133,15 @@ export default {
       }, {
         key: "chengdu",
         value: "成都"
+      }, {
+        key: "suzhou",
+        value: "苏州"
+      }, {
+        key: "hangzhou",
+        value: "杭州"
+      }, {
+        key: "nanjing",
+        value: "南京"
       }]
     };
   },
@@ -116,6 +156,7 @@ export default {
       console.log(this.selectionTable[0])
       this.form.activityName = this.selectionTable[0].activityName
       this.form.activityArea = this.selectionTable[0].activityArea
+      this.form.time = this.selectionTable[0].time
       this.form.activityPurpose.push(this.selectionTable[0].activityPurpose)
       this.form.resources = this.selectionTable[0].resources
       this.form.content = this.selectionTable[0].content
@@ -147,7 +188,7 @@ export default {
         param: {
           activityName: this.form.activityName,
           activityArea: this.form.activityArea,
-          time: this.form.date1 + " " + this.form.date2,
+          time: this.form.time,
           activityPurpose: this.form.activityPurpose[0],
           resources: this.form.resources,
           content: this.form.content,
@@ -165,6 +206,11 @@ export default {
 
 </script>
 <style lang='stylus' scoped>
+.form-head
+  font-size 22px
+  text-align left
+  padding-left 40px
+  padding-top 20px
 .form-con
   width 460px
   padding 40px

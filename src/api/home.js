@@ -21,6 +21,11 @@ let commnoApi = {
     editTable(data) {
         console.log(data)
         return api(`/testTable/${data.id}`, data, 'put')
+    },
+    //删除
+    deletTable(data) {
+        console.log(data)
+        return api(`/testTable/${data.id}`, "", 'delete')
     }
 }
 export default commnoApi

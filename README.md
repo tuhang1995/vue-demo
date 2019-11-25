@@ -6,6 +6,13 @@
 npm install
 ```
 
+### 启动 json-server
+
+```
+ json-server --host 192.168.0.54 db.json
+ 可以不写ip 访问就是本地localhost
+```
+
 ### Compiles and hot-reloads for development
 
 ```
