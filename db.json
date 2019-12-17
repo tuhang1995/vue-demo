@@ -117,15 +117,6 @@
         "name": "typicode"
     },
     "testTable": [{
-            "activityName": "活动4",
-            "activityArea": "武汉",
-            "time": "2019-11-18 17:54:39",
-            "activityPurpose": "单纯品牌曝光",
-            "resources": "线上品牌商赞助",
-            "content": "系统管理页面测试",
-            "id": 4
-        },
-        {
             "activityName": "下班啦",
             "activityArea": "成都",
             "time": "2019-11-22 17:57:21",
@@ -152,5 +143,34 @@
             "content": "测试活动12",
             "id": 72
         }
-    ]
+    ],
+    "mapData": {
+        "code": 1,
+        "data": [{
+            "site_name": "站点1",
+            "count": 102,
+            "site_x": "31.262299",
+            "site_y": "121.434891"
+        }, {
+            "site_name": "站点2",
+            "count": 103,
+            "site_x": "31.254705",
+            "site_y": "121.431585"
+        }, {
+            "site_name": "站点3",
+            "count": 104,
+            "site_x": "31.262855",
+            "site_y": "121.433586"
+        }, {
+            "site_name": "站点4",
+            "count": 105,
+            "site_x": "31.252668",
+            "site_y": "121.435897"
+        }, {
+            "site_name": "站点5",
+            "count": 106,
+            "site_x": "31.245629",
+            "site_y": "121.444808"
+        }]
+    }
 }

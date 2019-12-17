@@ -173,7 +173,7 @@ export default {
     },
     onSubmit () {
       //首先关闭当前增加页面
-      this.$emit('close', false)
+      // this.$emit('close', false)
       let type = '', id = ''
       //说明是编辑
       if (Object.keys(this.selectionTable).length != 0) {

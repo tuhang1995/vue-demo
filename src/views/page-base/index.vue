@@ -9,7 +9,7 @@
 
 <script>
 import JSON from '@/lib/jinshan.json'
-import '@/lib/shanghai.js'
+//import '@/lib/shanghai.js'
 
 export default {
   name: '',

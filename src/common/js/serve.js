@@ -4,18 +4,18 @@
  */
 //配置api接口
 import axios from 'axios'
-var rootApi = 'http://192.168.0.54:3000/'
-    //var rootApi = "http://15.60.16.86:8080/pcs"
+//var rootApi = '/api'; //这里是为了处理跨域
+var rootApi = "http://127.0.0.1:3000"
     //设置请求头
 const http = axios.create({
-        baseURL: rootApi,
-        // withCredentials: true,
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        responseType: 'json'
-    })
-    //自定义判断元素类型js
+    baseURL: rootApi,
+    // withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    responseType: 'json'
+});
+//自定义判断元素类型js
 function toType(obj) {
     return {}.toString
         .call(obj)
@@ -23,18 +23,18 @@ function toType(obj) {
         .toLowerCase()
 }
 http.interceptors.request.use(config => {
-        return config
-    })
-    //响应拦截
+    return config
+});
+//响应拦截
 http.interceptors.response.use(
-        res => {
-            return res
-        },
-        error => {
-            return Promise.reject(error)
-        }
-    )
-    //对参数进行处理
+    res => {
+        return res
+    },
+    error => {
+        return Promise.reject(error)
+    }
+);
+//对参数进行处理
 function filterNull(o) {
     for (var key in o) {
         if (o[key] === null) {

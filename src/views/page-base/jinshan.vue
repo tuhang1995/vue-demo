@@ -7,13 +7,14 @@
           <el-col :span="6">
             <el-input v-model="searchText"
                       clearable
+                      @keyup.enter.native='searchData'
                       placeholder="请输入内容进行搜索"></el-input>
 
           </el-col>
           <el-col :span="12">
             <el-button type="primary"
                        icon="el-icon-search"
-                       @click.native='search'>搜索</el-button>
+                       @click.native='searchData'>搜索</el-button>
             <el-button type="success"
                        icon="el-icon-plus"
                        @click.native='showModel'>添加</el-button>
@@ -76,7 +77,7 @@
 
 <script>
 import animationDemo from './animationDemo'
-import api from '@/api/home'
+import api from '@/api/map'
 export default {
   name: '',
   props: [''],
@@ -138,41 +139,72 @@ export default {
       this.selectionTable = selection
 
     },
-    search () {
-      this.loading = true
+    searchData () {
+      //this.loading = true
       //模糊查询
+      /* //json-server请求 
       let param = {
         q: this.searchText
       }
+      
       api.postTable(param).then((res) => {
         this.loading = false
         this.tableData = res
+      })*/
+
+      //node请求数据库
+      let param = {
+        val: this.searchText
+      }
+      api.searchData(param).then((res) => {
+        console.log(res)
       })
     },
     //初始化表格数据
     getTestData () {
-      api.postTable().then((res) => {
+      api.getData().then((res) => {
+        console.log(res)
         this.loading = false
-        this.tableData = res
+        this.tableData = res.result.data
       })
     },
     //添加表格数据
     addTable (obj) {
-      console.log(obj)
       if (obj.type == '编辑') {
 
         //一定是编辑
         api.editTable(obj.param).then((res) => {
           // this.getTestData()
           // console.log(res)
-          this.getTestData()
+
+          //
         })
       } else {
 
-
-        obj.param.id = Math.floor(Math.random() * (100 - 1 + 1)) + 1
+        //使用json-server进行的添加
+        /*obj.param.id = Math.floor(Math.random() * (100 - 1 + 1)) + 1
         api.addTable(obj.param).then((res) => {
           this.getTestData()
+        })*/
+
+        //使用node进行的添加 (对数据库进行操作)
+        api.addUser(obj.param).then((res) => {
+          console.log(res)
+          if (res.status == 0) {
+            this.$message({
+              type: "success",
+              message: res.msg
+            })
+            this.modelVis = false
+            this.getTestData()
+          } else {
+            this.$message({
+              type: "warning",
+              message: res.msg
+            })
+            this.modelVis = true
+          }
+
         })
       }
     },

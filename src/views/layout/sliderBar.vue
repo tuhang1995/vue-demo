@@ -1,54 +1,80 @@
 <template>
   <div class="sliderBar">
-    <el-menu :default-active="activeIndex"
-             class="el-menu-vertical-demo"
-             @open="handleOpen"
-             @close="handleClose">
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+    >
       <NavMenu :navMenus="menuItem"></NavMenu>
-
     </el-menu>
   </div>
-
 </template>
 
 <script>
-import NavMenu from "./navMenu.vue";
+import NavMenu from './navMenu.vue'
 export default {
   name: '',
   props: [''],
-  data () {
+  data() {
     return {
       menuItem: [
         {
-          name: "组件",
-          icon: "el-icon-menu",
-          pageUrl: "/components"
+          name: '组件',
+          icon: 'el-icon-menu',
+          pageUrl: '/components'
         },
         {
-          name: "工作总结",
-          icon: "el-icon-tickets",
-          pageUrl: "/base",
+          name: '工作总结',
+          icon: 'el-icon-tickets',
+          pageUrl: '/base',
           childs: [
             {
               name: '模态框左边进入',
-              pageUrl: "/base/jinshan",
-              icon: "el-icon-news",
+              pageUrl: '/base/jinshan',
+              icon: 'el-icon-news'
             },
             {
               name: '实时视频播放',
-              pageUrl: "/base/nowVideo",
-              icon: "el-icon-eleme",
+              pageUrl: '/base/nowVideo',
+              icon: 'el-icon-eleme'
             },
             {
               name: '合并表格',
-              pageUrl: "/base/mergeTable",
-              icon: "el-icon-paperclip",
+              pageUrl: '/base/mergeTable',
+              icon: 'el-icon-paperclip'
+            }
+          ]
+        },
+        {
+          name: '响应式echarts',
+          icon: 'el-icon-pie-chart',
+          pageUrl: '/char'
+        },
+        {
+          name: '地图',
+          icon: 'el-icon-position',
+          pageUrl: '/map'
+        },
+        {
+          name: 'node学习',
+          icon: 'el-icon-monitor',
+          pageUrl: '/node',
+          childs: [
+            {
+              name: '学习路由',
+              pageUrl: '/node/leanRouter',
+              icon: 'el-icon-table-lamp'
+            },
+            {
+              name: '面向对象复习',
+              pageUrl: '/node/test',
+              icon: 'el-icon-notebook-2'
             }
           ]
         }
       ]
-
-    };
+    }
   },
 
   components: {
@@ -56,39 +82,37 @@ export default {
   },
 
   computed: {
-    activeIndex () {
+    activeIndex() {
       //默认显示第一个  总感觉路由配错了... 以后再来改
       if (this.$route.path == '/') {
-        this.$router.push('/components');
+        this.$router.push('/components')
       }
 
       return this.$route.path
     }
   },
 
-  beforeMount () { },
+  beforeMount() {},
 
-  mounted () { },
+  mounted() {},
 
   methods: {
-    handle_menuItem (item) {
-      this.$router.push(item.pageUrl);
+    handle_menuItem(item) {
+      this.$router.push(item.pageUrl)
     },
-    handleOpen (key, keyPath) {
+    handleOpen(key, keyPath) {
       //this.$router.push(keyPath[0]);
       // console.log(keyPath);
     },
-    handleClose (key, keyPath) {
+    handleClose(key, keyPath) {
       // console.log(key, keyPath);
-    },
+    }
   },
 
   watch: {}
-
 }
-
 </script>
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
 .wrap
   width 100%
   display flex

@@ -40,3 +40,10 @@ npm run test
     merge-table.vue     //合并表格 element
     nowVideo.vue        //在线视频播放
 ```
+
+### 项目中用到了 node
+
+```
+  要先启动sql
+  启用node  node/src/server/app.js
+```

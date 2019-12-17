@@ -13,24 +13,27 @@ module.exports = {
     },
     lintOnSave: false,
     productionSourceMap: true,
-    devServer: {
-        port: 3000,
-        host: "0.0.0.0",
-        proxy: {
-            "/api": {
-                target: "192.168.0.54:3000/",
-                changeOrigin: true,
-                pathRewrite: {
-                    "^/api": ""
-                }
-            }
-        },
-        // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
-        overlay: {
-            warnings: false,
-            errors: true
-        }
-    },
+    // devServer: {
+    //     port: 3000,
+    //     host: "0.0.0.0",
+    //     // ws: false,
+    //     //为了解决项目一直报sockjs-node 404 
+    //     sockHost: 'http://192.168.0.54:3000',
+    //     proxy: {
+    //         "/api": {
+    //             target: "http://192.168.0.54:3000",
+    //             changeOrigin: true,
+    //             pathRewrite: {
+    //                 "^/api": ""
+    //             }
+    //         }
+    //     },
+    //     // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
+    //     overlay: {
+    //         warnings: false,
+    //         errors: true
+    //     }
+    // },
     configureWebpack: { // 覆盖webpack默认配置的都在这里
         resolve: { // 配置解析别名
             alias: {
