@@ -14,16 +14,31 @@
         <ul class="list clearfix"
             v-if="item.typeName == 'chose'">
           <li>
-            <span>A:{{ item.A }}</span>
+            <el-radio v-model="formArr[index].one"
+                      label="1">
+              <span>A:{{ item.A }}</span>
+            </el-radio>
+
           </li>
           <li>
-            <span>B:{{ item.B }}</span>
+            <el-radio v-model="formArr[index].one"
+                      label="2">
+              <span>B:{{ item.B }}</span>
+            </el-radio>
           </li>
           <li>
-            <span>C:{{ item.C }}</span>
+            <el-radio v-model="formArr[index].one"
+                      label="3">
+              <span>C:{{ item.C }}</span>
+            </el-radio>
+
           </li>
           <li>
-            <span>D:{{ item.D }}</span>
+            <el-radio v-model="formArr[index].one"
+                      label="4">
+              <span><span>D:{{ item.D }}</span></span>
+            </el-radio>
+
           </li>
         </ul>
         <div class="words"
@@ -156,6 +171,8 @@ $listColor = #B03552
         span
           color $listColor
           padding-right 10px
+      >>>.el-radio__label
+        font-size 18px
     .words
       margin-top 15px
       >>>.el-form-item__label

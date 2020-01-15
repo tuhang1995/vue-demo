@@ -9,7 +9,10 @@ import './registerServiceWorker'
 import echarts from 'echarts'
 import '@/common/css/common.styl'
 import animated from 'animate.css'
-
+import global from '@/common/js/eventBus'
+//import store from '@/store.js';
+//  ### 在main.js中引入
+Vue.prototype.$global = global;
 //地图css
 import 'leaflet/dist/leaflet.css'
 //引入Leaflet对象 挂载到Vue上，便于全局使用，也可以单独页面中单独引用

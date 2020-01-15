@@ -1,67 +1,29 @@
 <template>
-  <div class="wrap">
-    <div class="sliderBar">
-      <el-menu class="el-menu-vertical-demo"
-               :default-active="$route.path">
-        <el-menu-item v-for="(item, index) in menuItem"
-                      :key="index"
-                      :index="item.pageUrl"
-                      @click="handle_menuItem(item)">
-          <i :class="item.icon"></i>
-          <span>{{ item.name }}</span>
-        </el-menu-item>
-      </el-menu>
-    </div>
-    <div class="main">
-      <router-view />
-    </div>
-  </div>
-
+  <div class="wrap"></div>
 </template>
 
 <script>
-
 export default {
   name: '',
   props: [''],
-  data () {
-    return {
-      menuItem: [
-        {
-          name: "多点碰撞",
-          icon: "el-icon-star-on",
-          pageUrl: "/page/header"
-        },
-        {
-          name: "热点基础查询",
-          icon: "el-icon-star-on",
-          pageUrl: "/page/base"
-        }
-      ]
-
-    };
+  data() {
+    return {}
   },
 
   components: {},
 
   computed: {},
 
-  beforeMount () { },
+  beforeMount() {},
 
-  mounted () { },
+  mounted() {},
 
-  methods: {
-    handle_menuItem (item) {
-      this.$router.push(item.pageUrl);
-    }
-  },
+  methods: {},
 
   watch: {}
-
 }
-
 </script>
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
 .wrap
   width 100%
   display flex

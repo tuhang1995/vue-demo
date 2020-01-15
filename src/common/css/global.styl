@@ -15,3 +15,10 @@
   bottom 0
   z-index 10
   background #fff
+// 修改input默认填充的颜色
+input
+  background-color rgba(255, 255, 255, 0) !important
+input:-webkit-autofill
+  transition background-color 5000s ease-in-out 0s
+input:-webkit-autofill:focus
+  -webkit-text-fill-color #eee !important

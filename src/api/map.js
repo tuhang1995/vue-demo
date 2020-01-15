@@ -17,6 +17,10 @@ let commnoApi = {
     //注册
     register(data) {
         return api("/user/register", data, 'post')
+    },
+    //登陆
+    login(data) {
+        return api("/user/login", data, 'post')
     }
 
 }

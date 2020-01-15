@@ -56,6 +56,7 @@
 
 <script>
 import LoginBg from '@/assets/bg.png'
+import api from '@/api/map'
 export default {
   components: {},
   name: 'login',
@@ -110,32 +111,30 @@ export default {
       }
     },
     handleLogin() {
-      //   let para = {
-      //     username: this.loginForm.username,
-      //     password: this.loginForm.password
-      //   }
-      //   this.logins(para).then(res => {
-      //     Object.assign(para, res)
-      //     this.$store.dispatch('LoginByUsername', para).then((res) => {
-      //       console.log(2333);
-      //       this.$router.push({
-      //         path: '/'
-      //       })
-      //     }).catch(() => {
-      //       console.log(663);
-      //     })
-      //   }).catch((err) => {
-      //     this.$message.error(err);
-      //   })
-
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
+      let params = {
+        userName: this.loginForm.username,
+        password: this.loginForm.password
+      }
+      api.login(params).then(res => {
+        if (res.status == 0) {
           this.$router.push({ path: '/components' })
         } else {
-          console.log('error submit!!')
-          return false
+          this.$message({
+            showClose: true,
+            message: res.msg,
+            type: 'error'
+          })
         }
       })
+
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     this.$router.push({ path: '/components' })
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
     },
     logins(param) {
       return this.$request.post('/api/login', {
@@ -148,6 +147,7 @@ export default {
 }
 </script>
 <style type="text/stylus" lang="stylus">
+
 $bg=#2d3a4b;
 $light_gray= #eee;
 $bg=#2d3a4b;
@@ -170,7 +170,7 @@ $btn_hover= #0e3a88;
       height: 47px;
       &:-webkit-autofill {
         // -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: #fff !important;
+        -webkit-text-fill-color: #eee !important;
       }
     }
   }

@@ -4,6 +4,8 @@ const mysql = require("mysql")
 
 var bodyParser = require('body-parser');
 
+const passport = require("passport")
+
 //创建连接
 const db = mysql.createConnection({
     host: "localhost",
@@ -12,6 +14,8 @@ const db = mysql.createConnection({
     password: "Tu1995", //密码
     port: 3306 // 端口号，MySQL默认3306
 })
+
+
 
 db.connect((err) => {
     if (err) throw err;
@@ -46,6 +50,9 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+//passport初始化
+app.use(passport.initialize());
+require('./passport')(passport);
 //post请求
 app.use(bodyParser.json())
 

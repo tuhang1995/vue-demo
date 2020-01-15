@@ -2,6 +2,7 @@
   <div class="navMenus">
     <template v-for="(item, index) in navMenus">
       <el-menu-item v-if="!item.childs"
+                    :key="index"
                     @click="handle_menuItem(item)"
                     :index="item.pageUrl">
         <i :class="item.icon"></i>
@@ -71,7 +72,31 @@ export default {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  
+
+
+
+
+
+
+
+
 
 
 

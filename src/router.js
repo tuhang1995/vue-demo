@@ -18,6 +18,15 @@ const routes = [{
         }
     },
     {
+        path: '/register',
+        name: 'register',
+        component: () =>
+            import ('@/views/node/leanRouter'),
+        meta: {
+            needLogin: false
+        }
+    },
+    {
         path: '/index',
         name: 'page',
         component: () =>
@@ -25,6 +34,7 @@ const routes = [{
         children: [{
                 path: '/components',
                 name: 'components',
+                title: "组件",
                 component: () =>
                     import ('@/views/page-header/index')
             },
@@ -36,6 +46,7 @@ const routes = [{
                 children: [{
                         path: '/base/jinshan',
                         name: 'jinshan',
+                        title: "模态框左边进入",
                         component: () =>
                             import ('@/views/page-base/jinshan')
                     },
@@ -50,6 +61,11 @@ const routes = [{
                         name: 'mergeTable',
                         component: () =>
                             import ('@/views/page-base/merge-table')
+                    }, {
+                        path: '/base/tabs',
+                        name: 'tabs',
+                        component: () =>
+                            import ('@/views/page-base/tabs')
                     }
                 ]
             },
@@ -81,6 +97,12 @@ const routes = [{
                     component: () =>
                         import ('@/views/node/test')
                 }]
+            },
+            {
+                path: '/tabs',
+                name: 'tabs',
+                component: () =>
+                    import ('@/views/tabs/index')
             }
         ]
     }

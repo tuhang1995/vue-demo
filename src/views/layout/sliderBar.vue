@@ -1,11 +1,9 @@
 <template>
   <div class="sliderBar">
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-    >
+    <el-menu :default-active="activeIndex"
+             class="el-menu-vertical-demo"
+             @open="handleOpen"
+             @close="handleClose">
       <NavMenu :navMenus="menuItem"></NavMenu>
     </el-menu>
   </div>
@@ -16,7 +14,7 @@ import NavMenu from './navMenu.vue'
 export default {
   name: '',
   props: [''],
-  data() {
+  data () {
     return {
       menuItem: [
         {
@@ -72,7 +70,12 @@ export default {
               icon: 'el-icon-notebook-2'
             }
           ]
-        }
+        },
+        {
+          name: '标签页',
+          icon: 'el-icon-position',
+          pageUrl: '/tabs'
+        },
       ]
     }
   },
@@ -82,7 +85,7 @@ export default {
   },
 
   computed: {
-    activeIndex() {
+    activeIndex () {
       //默认显示第一个  总感觉路由配错了... 以后再来改
       if (this.$route.path == '/') {
         this.$router.push('/components')
@@ -92,19 +95,19 @@ export default {
     }
   },
 
-  beforeMount() {},
+  beforeMount () { },
 
-  mounted() {},
+  mounted () { },
 
   methods: {
-    handle_menuItem(item) {
+    handle_menuItem (item) {
       this.$router.push(item.pageUrl)
     },
-    handleOpen(key, keyPath) {
+    handleOpen (key, keyPath) {
       //this.$router.push(keyPath[0]);
       // console.log(keyPath);
     },
-    handleClose(key, keyPath) {
+    handleClose (key, keyPath) {
       // console.log(key, keyPath);
     }
   },

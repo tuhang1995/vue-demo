@@ -45,6 +45,8 @@ module.exports = {
         }
 
     },
+    // assetsDir: "static",  项目打包后文件放入static(css/js/image)文件内
+    //处理视频直播
     chainWebpack: config => {
         config.module
             .rule('swf')
