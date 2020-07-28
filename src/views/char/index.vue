@@ -1,7 +1,6 @@
 <template>
   <div class="main">
-    <div id="mychar"
-         ref="mychar"></div>
+    <div id="mychar" ref="mychar"></div>
   </div>
 </template>
 
@@ -9,10 +8,10 @@
 export default {
   name: '',
   props: [''],
-  data () {
+  data() {
     return {
       options: {},
-      charLine: ''
+      charLine: '',
     }
   },
 
@@ -20,30 +19,31 @@ export default {
 
   computed: {},
 
-  beforeMount () { },
+  beforeMount() {},
 
-  mounted () {
+  mounted() {
     this.initChar()
     this.drawChar()
 
     window.onresize = () => {
+      console.log(345)
       this.charLine.resize() // 多个图表，第一个图表
     }
   },
 
   methods: {
-    drawChar () {
+    drawChar() {
       this.charLine = this.$echarts.init(this.$refs.mychar)
       this.charLine.setOption(this.options)
     },
-    initChar () {
+    initChar() {
       this.options = {
         tooltip: {
-          trigger: 'axis'
+          trigger: 'axis',
         },
         grid: {
           right: 10,
-          left: 50
+          left: 50,
         },
         xAxis: [
           {
@@ -51,49 +51,49 @@ export default {
             boundaryGap: false, //从0开始
             data: ['1', '2', '3', '4', '5', '6'],
             splitLine: {
-              show: false
+              show: false,
             },
             axisTick: {
-              show: false //y轴刻度线
+              show: false, //y轴刻度线
             },
             axisLine: {
               show: false,
               lineStyle: {
-                color: '#fff'
-              }
+                color: '#fff',
+              },
             },
             nameTextStyle: {
-              color: '#fff'
+              color: '#fff',
             },
             splitArea: {
-              show: false
-            }
-          }
+              show: false,
+            },
+          },
         ],
         yAxis: [
           {
             boundaryGap: [0, '50%'],
             type: 'value',
             splitLine: {
-              show: false
+              show: false,
             },
             axisTick: {
               //y轴刻度线
-              show: false
+              show: false,
             },
             axisLine: {
               show: false,
               lineStyle: {
-                color: '#fff'
-              }
+                color: '#fff',
+              },
             },
             nameTextStyle: {
-              color: '#fff'
+              color: '#fff',
             },
             splitArea: {
-              show: false
-            }
-          }
+              show: false,
+            },
+          },
         ],
         series: [
           {
@@ -106,8 +106,8 @@ export default {
                 color: '#ffb20c',
                 borderColor: '#000',
                 borderWidth: 0,
-                borderType: 'solid'
-              }
+                borderType: 'solid',
+              },
             },
             areaStyle: {
               normal: {
@@ -119,18 +119,18 @@ export default {
                   [
                     {
                       offset: 0,
-                      color: 'rgba(0,255,228,0.3)'
+                      color: 'rgba(0,255,228,0.3)',
                     },
                     {
                       offset: 0.8,
-                      color: 'rgba(0,112,238,0.1)'
-                    }
+                      color: 'rgba(0,112,238,0.1)',
+                    },
                   ],
                   false
                 ),
                 // shadowColor: 'rgba(0, 0, 0, 0.1)',
-                shadowBlur: 10
-              }
+                shadowBlur: 10,
+              },
             },
             lineStyle: {
               normal: {
@@ -143,19 +143,19 @@ export default {
                   [
                     {
                       offset: 0,
-                      color: '#00ffe4' // 0% 处的颜色
+                      color: '#00ffe4', // 0% 处的颜色
                     },
                     {
                       offset: 1,
-                      color: '#0070ee' // 100% 处的颜色
-                    }
+                      color: '#0070ee', // 100% 处的颜色
+                    },
                   ],
                   false
                 ),
                 shadowColor: 'rgba(72,216,191, 0.3)',
                 shadowBlur: 5,
-                shadowOffsetY: 5
-              }
+                shadowOffsetY: 5,
+              },
             },
             itemStyle: {
               normal: {
@@ -163,18 +163,18 @@ export default {
                 borderWidth: 5,
                 /*shadowColor: 'rgba(72,216,191, 0.3)',
                       shadowBlur: 100,*/
-                borderColor: '#fff'
-              }
+                borderColor: '#fff',
+              },
             },
-            smooth: true
-          }
-        ]
+            smooth: true,
+          },
+        ],
       }
       // this.carBelongEcharts.setOption(option,true);
-    }
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>

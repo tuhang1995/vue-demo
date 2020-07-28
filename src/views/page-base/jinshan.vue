@@ -7,6 +7,8 @@
             <el-input
               v-model="searchText"
               clearable
+              @clear="clearName"
+              size="mini"
               @keyup.enter.native="searchData"
               placeholder="请输入内容进行搜索"
             ></el-input>
@@ -14,6 +16,7 @@
           <el-col :span="12">
             <el-button
               type="primary"
+              size="mini"
               icon="el-icon-search"
               @click.native="searchData"
               >搜索</el-button
@@ -22,10 +25,12 @@
               type="success"
               icon="el-icon-plus"
               @click.native="showModel"
+              size="mini"
               >添加</el-button
             >
             <el-button
               type="warning"
+              size="mini"
               icon="el-icon-edit"
               @click.native="editTable"
               >修改</el-button
@@ -47,13 +52,10 @@
           style="width: 100%"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column prop="activityName" label="活动名称">
-          </el-table-column>
-          <el-table-column prop="activityArea" label="活动区域">
-          </el-table-column>
+          <el-table-column prop="name" label="活动名称"> </el-table-column>
+          <el-table-column prop="area" label="活动区域"> </el-table-column>
           <el-table-column prop="time" label="活动时间"> </el-table-column>
-          <el-table-column prop="activityPurpose" label="活动目的">
-          </el-table-column>
+          <el-table-column prop="purpose" label="活动目的"> </el-table-column>
 
           <el-table-column prop="resources" label="资源"> </el-table-column>
           <el-table-column prop="content" label="活动形式"> </el-table-column>
@@ -101,12 +103,12 @@ export default {
       searchText: '',
       loading: false,
       selectionTable: [],
-      title: '添加'
+      title: '添加',
     }
   },
 
   components: {
-    animationDemo
+    animationDemo,
   },
 
   computed: {},
@@ -118,35 +120,26 @@ export default {
   },
 
   methods: {
-    deleteTable() {
-      if (this.selectionTable.length == 0) {
-        this.$message({
-          type: 'warning',
-          message: '选中表格后在进行操作'
-        })
-        return
-      }
+    clearName() {
+      this.getTestData()
+    },
+    deleteTable(row) {
+      console.log('row: ', row)
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'warning',
       })
         .then(() => {
-          api.deletTable(this.selectionTable[0]).then(res => {
+          api.deleteUser({ id: row.id }).then((res) => {
             this.loading = true
-            this.getTestData()
-            this.$message({
-              type: 'success',
-              message: '删除成功!'
-            })
+            if (res.status == 0) {
+              this.getTestData()
+              this.$message.success('删除成功')
+            }
           })
         })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
+        .catch(() => {})
     },
     handleSelectionChange(selection) {
       this.selectionTable = selection
@@ -166,15 +159,15 @@ export default {
 
       //node请求数据库
       let param = {
-        val: this.searchText
+        val: this.searchText,
       }
-      api.searchData(param).then(res => {
-        console.log(res)
+      api.searchData(param).then((res) => {
+        this.tableData = res.result.data
       })
     },
     //初始化表格数据
     getTestData() {
-      api.getData().then(res => {
+      api.getData().then((res) => {
         console.log(res)
         this.loading = false
         this.tableData = res.result.data
@@ -184,7 +177,7 @@ export default {
     addTable(obj) {
       if (obj.type == '编辑') {
         //一定是编辑
-        api.editTable(obj.param).then(res => {
+        api.editTable(obj.param).then((res) => {
           // this.getTestData()
           // console.log(res)
           //
@@ -197,22 +190,23 @@ export default {
         })*/
 
         //使用node进行的添加 (对数据库进行操作)
-        api.addUser(obj.param).then(res => {
+        api.addUser(obj.param).then((res) => {
           console.log(res)
           if (res.status == 0) {
             this.$message({
               type: 'success',
-              message: res.msg
+              message: res.msg,
             })
             this.modelVis = false
             this.getTestData()
-          } else {
-            this.$message({
-              type: 'warning',
-              message: res.msg
-            })
-            this.modelVis = true
           }
+          // else {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: res.msg,
+          //   })
+          //   this.modelVis = true
+          // }
         })
       }
     },
@@ -236,10 +230,10 @@ export default {
     },
     close() {
       this.modelVis = false
-    }
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>

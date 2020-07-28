@@ -57,6 +57,7 @@
 <script>
 import LoginBg from '@/assets/bg.png'
 import api from '@/api/map'
+import { mapMutations } from 'vuex'
 export default {
   components: {},
   name: 'login',
@@ -80,7 +81,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '1111111'
+        password: '1111111',
       },
       loginRules: {
         // username: [{
@@ -92,17 +93,21 @@ export default {
           {
             required: true,
             trigger: 'blur',
-            validator: validatePassword
-          }
-        ]
+            validator: validatePassword,
+          },
+        ],
       },
       passwordType: 'password',
 
-      LoginBg: LoginBg
+      LoginBg: LoginBg,
     }
   },
 
   methods: {
+    ...mapMutations(['changeLogin']),
+    moveToken() {
+      sessionStorage.removeItem('token')
+    },
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -113,16 +118,22 @@ export default {
     handleLogin() {
       let params = {
         userName: this.loginForm.username,
-        password: this.loginForm.password
+        password: this.loginForm.password,
       }
-      api.login(params).then(res => {
+      api.login(params).then((res) => {
         if (res.status == 0) {
-          this.$router.push({ path: '/components' })
+          //  sessionStorage.setItem('token', res.token)
+          this.changeLogin({ token: res.token })
+          this.$router.push({ path: '/home' })
+          sessionStorage.setItem('userName', this.loginForm.username)
+          this.$global.userData = this.loginForm.username
+          console.log(this.$global.userData)
+          // console.log(sessionStorage.getItem('token'))
         } else {
           this.$message({
             showClose: true,
             message: res.msg,
-            type: 'error'
+            type: 'error',
           })
         }
       })
@@ -139,11 +150,13 @@ export default {
     logins(param) {
       return this.$request.post('/api/login', {
         username: this.loginForm.username,
-        password: this.loginForm.password
+        password: this.loginForm.password,
       })
-    }
+    },
   },
-  created() {}
+  created() {
+    this.moveToken()
+  },
 }
 </script>
 <style type="text/stylus" lang="stylus">

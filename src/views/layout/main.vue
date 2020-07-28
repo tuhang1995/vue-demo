@@ -1,28 +1,8 @@
 <template>
   <section class="app-main">
-    <el-tabs
-      v-model="activeIndex"
-      type="border-card"
-      closable
-      @tab-click="tabClick"
-      v-if="options.length"
-      @tab-remove="tabRemove"
-    >
-      <el-tab-pane
-        :key="item.name"
-        v-for="(item, index) in options"
-        :label="item.title"
-        :name="item.route"
-      >
-      </el-tab-pane>
-    </el-tabs>
     <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
+      <router-view />
     </transition>
-    <!-- <transition name="fade-transform"
-                mode="out-in">
-      <router-view :key="key" />
-    </transition> -->
   </section>
 </template>
 
@@ -32,20 +12,13 @@ export default {
   props: [''],
   data() {
     return {
-      activeIndex: this.$route.path
+      activeIndex: this.$route.path,
     }
   },
 
   components: {},
 
-  computed: {
-    key() {
-      return this.$route.path
-    },
-    options() {
-      return this.$store.state.options
-    }
-  },
+  computed: {},
 
   beforeMount() {},
 
@@ -65,23 +38,19 @@ export default {
       if (targetName == '/') {
         return
       }
-      this.$store.commit('delete_tabs', targetName)
+
       if (this.activeIndex === targetName) {
         // 设置当前激活的路由
         if (this.options && this.options.length >= 1) {
-          this.$store.commit(
-            'set_active_index',
-            this.options[this.options.length - 1].route
-          )
           this.$router.push({ path: this.activeIndex })
         } else {
           this.$router.push({ path: '/' })
         }
       }
-    }
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>

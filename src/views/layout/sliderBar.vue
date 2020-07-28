@@ -1,10 +1,17 @@
 <template>
   <div class="sliderBar">
-    <el-menu :default-active="activeIndex"
-             class="el-menu-vertical-demo"
-             @open="handleOpen"
-             @close="handleClose">
-      <NavMenu :navMenus="menuItem"></NavMenu>
+    <div class="user">
+      <el-avatar :src="circleUrl"></el-avatar>
+      <h5>{{ admin }}</h5>
+    </div>
+    <el-menu
+      :default-active="activeIndex"
+      class="el-menu-vertical-demo"
+      :collapse="isCollapse"
+      @open="handleOpen"
+      @close="handleClose"
+    >
+      <NavMenu :navMenus="menuItem" :isCollapse="isCollapse"></NavMenu>
     </el-menu>
   </div>
 </template>
@@ -14,13 +21,20 @@ import NavMenu from './navMenu.vue'
 export default {
   name: '',
   props: [''],
-  data () {
+  data() {
     return {
+      admin: this.$global.userData || sessionStorage.getItem('userName'),
+      circleUrl: require('@/assets/avatar.jpg'),
       menuItem: [
+        {
+          name: '首页',
+          icon: 'el-icon-menu',
+          pageUrl: '/home',
+        },
         {
           name: '组件',
           icon: 'el-icon-menu',
-          pageUrl: '/components'
+          pageUrl: '/components',
         },
         {
           name: '工作总结',
@@ -30,29 +44,29 @@ export default {
             {
               name: '模态框左边进入',
               pageUrl: '/base/jinshan',
-              icon: 'el-icon-news'
+              icon: 'el-icon-news',
             },
             {
               name: '实时视频播放',
               pageUrl: '/base/nowVideo',
-              icon: 'el-icon-eleme'
+              icon: 'el-icon-eleme',
             },
             {
               name: '合并表格',
               pageUrl: '/base/mergeTable',
-              icon: 'el-icon-paperclip'
-            }
-          ]
+              icon: 'el-icon-paperclip',
+            },
+          ],
         },
         {
           name: '响应式echarts',
           icon: 'el-icon-pie-chart',
-          pageUrl: '/char'
+          pageUrl: '/char',
         },
         {
           name: '地图',
           icon: 'el-icon-position',
-          pageUrl: '/map'
+          pageUrl: '/map',
         },
         {
           name: 'node学习',
@@ -62,57 +76,55 @@ export default {
             {
               name: '学习路由',
               pageUrl: '/node/leanRouter',
-              icon: 'el-icon-table-lamp'
+              icon: 'el-icon-table-lamp',
             },
-            {
-              name: '面向对象复习',
-              pageUrl: '/node/test',
-              icon: 'el-icon-notebook-2'
-            }
-          ]
+          ],
         },
         {
           name: '标签页',
           icon: 'el-icon-position',
-          pageUrl: '/tabs'
+          pageUrl: '/tabs',
         },
-      ]
+      ],
     }
   },
 
   components: {
-    NavMenu
+    NavMenu,
   },
 
   computed: {
-    activeIndex () {
+    isCollapse() {
+      return this.$global.isCollapse
+    },
+    activeIndex() {
       //默认显示第一个  总感觉路由配错了... 以后再来改
       if (this.$route.path == '/') {
-        this.$router.push('/components')
+        this.$router.push('/home')
       }
 
       return this.$route.path
-    }
+    },
   },
 
-  beforeMount () { },
+  beforeMount() {},
 
-  mounted () { },
+  mounted() {},
 
   methods: {
-    handle_menuItem (item) {
+    handle_menuItem(item) {
       this.$router.push(item.pageUrl)
     },
-    handleOpen (key, keyPath) {
+    handleOpen(key, keyPath) {
       //this.$router.push(keyPath[0]);
       // console.log(keyPath);
     },
-    handleClose (key, keyPath) {
+    handleClose(key, keyPath) {
       // console.log(key, keyPath);
-    }
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>
@@ -120,22 +132,13 @@ export default {
   width 100%
   display flex
 .sliderBar
-  width 240px
-  min-height 400px
-/deep/.el-menu-vertical-demo
-  height 100%
-  text-align left
-  width 240px
-  min-height 400px
-/deep/.el-menu-item.is-active
-  color #75b9e6
-  background-color #EAEEEF
-/deep/.el-menu
-  background-color #F3F5F6
-  color #768399
-/deep/.el-menu-item, /deep/.el-submenu__title
-  color #768399
-/deep/.el-menu-item:focus, /deep/.el-menu-item:hover, /deep/.el-submenu__title:hover
-  color #75b9e6
-  background-color #EAEEEF
+  overflow hidden
+  background-color #2F4051
+.user
+  height 20vh
+  display flex
+  color #fff
+  flex-direction column
+  align-items center
+  justify-content center
 </style>

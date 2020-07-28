@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import tableTab from '@/components/tabsOne'
-import tabsTwo from '@/components/tabsTwo'
 import { tabsMixin } from '@/common/js/mixins'
 export default {
   mixins: [tabsMixin],
@@ -39,14 +37,11 @@ export default {
   data() {
     return {
       editableTabsValue: this.$global.editableTabsValue,
-      editableTabs: this.$global.editableTabs
+      editableTabs: this.$global.editableTabs,
     }
   },
 
-  components: {
-    tableTab,
-    tabsTwo
-  },
+  components: {},
 
   computed: {},
 
@@ -78,11 +73,11 @@ export default {
       }
 
       this.editableTabsValue = activeName
-      this.editableTabs = tabs.filter(tab => tab.name !== targetName)
-    }
+      this.editableTabs = tabs.filter((tab) => tab.name !== targetName)
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>

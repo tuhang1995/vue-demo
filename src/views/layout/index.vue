@@ -1,11 +1,11 @@
 <template>
   <div class="wrap">
-    <page-head></page-head>
-    <section class="wrap-con">
-      <sliderBar></sliderBar>
-      <main-con></main-con>
-    </section>
+    <sliderBar></sliderBar>
+    <div class="con">
+      <page-head></page-head>
 
+      <main-con> </main-con>
+    </div>
   </div>
 </template>
 
@@ -16,41 +16,34 @@ import pageHead from '@/views/layout/page-head'
 export default {
   name: '',
   props: [''],
-  data () {
-    return {
-
-    };
+  data() {
+    return {}
   },
 
   components: {
     sliderBar,
     mainCon,
-    pageHead
+    pageHead,
   },
 
   computed: {},
 
-  beforeMount () { },
+  beforeMount() {},
 
-  mounted () { },
+  mounted() {},
 
-  methods: {
+  methods: {},
 
-  },
-
-  watch: {}
-
+  watch: {},
 }
-
 </script>
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
+.con
+  flex 1
+  display flex
+  flex-direction column
 .wrap
   display flex
-  height 100%
-  width 100%
-  flex-direction column
-.wrap-con
-  display flex
-  width 100%
-  height 100%
+  height  100%
+  width  100%
 </style>

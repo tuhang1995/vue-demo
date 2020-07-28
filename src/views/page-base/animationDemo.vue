@@ -7,10 +7,10 @@
     <div class="form-con">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="活动名称">
-          <el-input v-model="form.activityName"></el-input>
+          <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="活动区域">
-          <el-select v-model="form.activityArea" placeholder="请选择活动区域">
+          <el-select v-model="form.area" placeholder="请选择活动区域">
             <el-option
               v-for="item in areaOptions"
               :key="item.value"
@@ -43,14 +43,14 @@
         <!-- <el-form-item label="即时配送">
           <el-switch v-model="form.delivery"></el-switch>
         </el-form-item> -->
-        <el-form-item label="活动性质">
+        <!-- <el-form-item label="活动性质">
           <el-checkbox-group v-model="form.activityPurpose">
             <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
             <el-checkbox label="地推活动" name="type"></el-checkbox>
             <el-checkbox label="线下主题活动" name="type"></el-checkbox>
             <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
           </el-checkbox-group>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="特殊资源">
           <el-radio-group v-model="form.resources">
             <el-radio label="线上品牌商赞助"></el-radio>
@@ -75,13 +75,13 @@ export default {
   name: '',
   props: {
     selectionTable: {
-      default: () => {},
-      type: Object
+      default: () => [],
+      type: Array,
     },
     title: {
       default: '',
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
@@ -91,7 +91,7 @@ export default {
             text: '今天',
             onClick(picker) {
               picker.$emit('pick', new Date())
-            }
+            },
           },
           {
             text: '昨天',
@@ -99,7 +99,7 @@ export default {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24)
               picker.$emit('pick', date)
-            }
+            },
           },
           {
             text: '一周前',
@@ -107,48 +107,48 @@ export default {
               const date = new Date()
               date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
               picker.$emit('pick', date)
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       form: {
-        activityName: '',
-        activityArea: '',
+        name: '',
+        area: '',
         time: '',
-        activityPurpose: [],
+        purpose: [],
         resources: '',
-        content: ''
+        content: '',
       },
       areaOptions: [
         {
           key: 'shanghai',
-          value: '上海'
+          value: '上海',
         },
         {
           key: 'beijing',
-          value: '北京'
+          value: '北京',
         },
         {
           key: 'wuhan',
-          value: '武汉'
+          value: '武汉',
         },
         {
           key: 'chengdu',
-          value: '成都'
+          value: '成都',
         },
         {
           key: 'suzhou',
-          value: '苏州'
+          value: '苏州',
         },
         {
           key: 'hangzhou',
-          value: '杭州'
+          value: '杭州',
         },
         {
           key: 'nanjing',
-          value: '南京'
-        }
-      ]
+          value: '南京',
+        },
+      ],
     }
   },
 
@@ -159,10 +159,10 @@ export default {
   beforeMount() {},
   created() {
     if (Object.keys(this.selectionTable).length != 0) {
-      this.form.activityName = this.selectionTable.activityName
-      this.form.activityArea = this.selectionTable.activityArea
+      this.form.name = this.selectionTable.name
+      this.form.area = this.selectionTable.area
       this.form.time = this.selectionTable.time
-      this.form.activityPurpose.push(this.selectionTable.activityPurpose)
+      this.form.purpose.push(this.selectionTable.purpose)
       this.form.resources = this.selectionTable.resources
       this.form.content = this.selectionTable.content
     }
@@ -189,20 +189,20 @@ export default {
       let obj = {
         type: type,
         param: {
-          activityName: this.form.activityName,
-          activityArea: this.form.activityArea,
+          name: this.form.name,
+          area: this.form.area,
           time: this.form.time,
-          activityPurpose: this.form.activityPurpose[0],
+          purpose: this.form.purpose[0],
           resources: this.form.resources,
           content: this.form.content,
-          id: id
-        }
+          id: id,
+        },
       }
       this.$emit('addTable', obj)
-    }
+    },
   },
 
-  watch: {}
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>
